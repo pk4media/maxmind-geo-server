@@ -1,0 +1,13 @@
+[template]
+
+src = "geoip.tmpl"
+dest = "/etc/GeoIP.conf"
+
+owner = "root"
+mode = "0644"
+keys = [
+  "MAXMIND_USER_ID",
+  "MAXMIND_LICENSE_KEY",
+  "MAXMIND_PRODUCT_IDS",
+  "MAXMIND_DIRECTORY"
+]
