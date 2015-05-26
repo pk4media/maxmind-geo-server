@@ -23,6 +23,20 @@ var app = express();
 
 app.use(logger('dev'));
 
+app.use('/', function(req, res, next) {
+  try {
+    geodb.getGeoData('23.243.25.140', function(err, data) {
+      if (err) {
+        res.status(500).send('Geo Database Error');
+      }
+
+      res.status(200).send('');
+    });
+  } catch(ex) {
+    res.status(500).send('Geo Database Error');
+  }
+});
+
 app.use('/:ip', function(req, res, next) {
   try {
     geodb.getGeoData(req.params.ip, function(err, data) {
