@@ -1,0 +1,29 @@
+{
+  "AWSEBDockerrunVersion": "2",
+  "containerDefinitions": [
+    {
+      "name": "maxmind-geo-db",
+      "image": "pk4media/maxmind-geo-db:latest",
+      "essential": true,
+      "memory": 512
+    },
+    {
+      "name": "maxmind-geo-server",
+      "image": "pk4media/maxmind-geo-server:latest",
+      "essential": true,
+      "memory": 1024,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "volumesFrom": [
+        {
+          "sourceContainer": "maxmind-geo-db",
+          "readOnly": true
+        }
+      ]
+    }
+  ]
+}
